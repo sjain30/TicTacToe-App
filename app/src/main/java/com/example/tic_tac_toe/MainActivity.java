@@ -15,11 +15,39 @@ public class MainActivity extends AppCompatActivity {
 
     //2: o. 1: x
 
+
     int map[]= new int[10];
-    int player=2;
+
+    int player;
     boolean gameover=false;
+
+    View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            EditText play= findViewById(R.id.editText);
+
+            String get= play.getText().toString();
+            if(get.equals("X")||get.equals("x")){
+                player=1;
+            }else
+                player=2;
+//            play.setText("");
+            play.setEnabled(false);
+            if (player==2) {
+
+                Toast.makeText(MainActivity.this, "O goes first", Toast.LENGTH_LONG).show();
+            }else
+                Toast.makeText(MainActivity.this, "X goes first", Toast.LENGTH_LONG).show();
+
+
+        }
+
+    };
+
+
     public void dropIn(View view)
     {
+
         ImageView imageview = (ImageView)view;
         int tag= Integer.parseInt(imageview.getTag().toString());
         if (map[tag+1]==0 && gameover==false) {
@@ -103,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         if (map[7]==item && map[8]==item &&map[9]==item){
             return true;
         }
-        if (map[4]==item && map[5]==item &&map[6]==item){
+        if (map[4]==item &&map[5]==item &&map[6]==item){
             return true;
         }
         if (map[1]==item && map[2]==item &&map[3]==item){
@@ -138,6 +166,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button button=findViewById(R.id.button2);
 //
 //        EditText editText = findViewById(R.id.editText);
 //        char ch= editText.getText().toString().charAt(0);
@@ -148,6 +178,11 @@ public class MainActivity extends AppCompatActivity {
 //            player=2;
 //        }
 //        editText.setVisibility(View.INVISIBLE);
-        Toast.makeText(this, "O goes first", Toast.LENGTH_LONG).show();
+
+
+        button.setOnClickListener(listener);
+
+//            Toast.makeText(this, "O goes first", Toast.LENGTH_LONG).show();
+
     }
 }
