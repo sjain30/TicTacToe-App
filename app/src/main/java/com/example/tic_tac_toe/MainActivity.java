@@ -17,22 +17,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     int map[]= new int[10];
-
     int player;
     boolean gameover=false;
+    private Button button;
+    private Button but;
 
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            EditText play= findViewById(R.id.editText);
+            Button b =(Button) view;
 
-            String get= play.getText().toString();
-            if(get.equals("X")||get.equals("x")){
+            String get= b.getText().toString();
+            if(get.equals("X")){
                 player=1;
             }else
                 player=2;
 //            play.setText("");
-            play.setEnabled(false);
+            button.setEnabled(false);
+            but.setEnabled(false);
+
             if (player==2) {
 
                 Toast.makeText(MainActivity.this, "O goes first", Toast.LENGTH_LONG).show();
@@ -89,10 +92,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void playagain(View view)
     {
+        button.setEnabled(true);
+        but.setEnabled(true);
         TextView textview = findViewById(R.id.textView);
         textview.setVisibility(View.INVISIBLE);
 
         Button button = findViewById(R.id.button);
+
 
 //        EditText editText = findViewById(R.id.editText);
 //        editText.setVisibility(View.VISIBLE);
@@ -167,7 +173,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button=findViewById(R.id.button2);
+        button=findViewById(R.id.button2);
+        but =findViewById(R.id.button3);
+
+
 //
 //        EditText editText = findViewById(R.id.editText);
 //        char ch= editText.getText().toString().charAt(0);
@@ -181,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         button.setOnClickListener(listener);
+        but.setOnClickListener(listener);
 
 //            Toast.makeText(this, "O goes first", Toast.LENGTH_LONG).show();
 
