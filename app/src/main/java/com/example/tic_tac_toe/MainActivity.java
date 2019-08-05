@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
                 player=1;
             }else
                 player=2;
-//            play.setText("");
             button.setEnabled(false);
             but.setEnabled(false);
 
@@ -42,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
             }else
                 Toast.makeText(MainActivity.this, "X goes first", Toast.LENGTH_LONG).show();
 
-
+            but.setVisibility(View.INVISIBLE);
+            button.setVisibility(View.INVISIBLE);
+            TextView textView3=findViewById(R.id.textView3);
+            textView3.setVisibility(View.INVISIBLE);
         }
 
     };
@@ -92,27 +93,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void playagain(View view)
     {
+        but.setVisibility(View.VISIBLE);
+        button.setVisibility(View.VISIBLE);
+        TextView textView3=findViewById(R.id.textView3);
+        textView3.setVisibility(View.VISIBLE);
         button.setEnabled(true);
         but.setEnabled(true);
         TextView textview = findViewById(R.id.textView);
         textview.setVisibility(View.INVISIBLE);
 
         Button button = findViewById(R.id.button);
-
-
-//        EditText editText = findViewById(R.id.editText);
-//        editText.setVisibility(View.VISIBLE);
-//
-//        char ch= editText.getText().toString().charAt(0);
-//        if (ch=='x' || ch=='X'){
-//            player=1;
-//        }
-//        else{
-//            player=2;
-//        }
-//        editText.setVisibility(View.INVISIBLE);
-//
-//        Toast.makeText(this, ch+" goes first", Toast.LENGTH_LONG).show();
         button.setVisibility(View.INVISIBLE);
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
@@ -127,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < map.length; i++) {
             map[i]=0;
         }
-        player=2;
         gameover=false;
     }
 
@@ -176,23 +165,7 @@ public class MainActivity extends AppCompatActivity {
         button=findViewById(R.id.button2);
         but =findViewById(R.id.button3);
 
-
-//
-//        EditText editText = findViewById(R.id.editText);
-//        char ch= editText.getText().toString().charAt(0);
-//        if (ch=='x' || ch=='X'){
-//            player=1;
-//        }
-//        else{
-//            player=2;
-//        }
-//        editText.setVisibility(View.INVISIBLE);
-
-
         button.setOnClickListener(listener);
         but.setOnClickListener(listener);
-
-//            Toast.makeText(this, "O goes first", Toast.LENGTH_LONG).show();
-
     }
 }
